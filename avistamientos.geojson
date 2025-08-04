@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Avistamiento de 1 Delfín. 24/06/25 - 15:46hrs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.88815,
+          -53.160939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Salida a terreno 24/06/26 - Avistamiento de 1 Delfín"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.888375,
+          -53.161093
+        ]
+      }
+    }
+  ]
+}
