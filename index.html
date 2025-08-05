@@ -20,10 +20,12 @@
 <body>
 
   <div class="section">
-    <h1>Ciencia Ciudadana: Avistamientos</h1>
+    <h1>Mapas de cetaceos Ayúdanos a construir el primer mapa ciudadano de cetáceos en la Patagonia </h1>
     <p>
       Este mapa interactivo muestra los puntos de avistamiento de cetáceos registrados en la Región de Magallanes.
-      Cada marcador representa una observación con su respectiva especie, ubicación y fecha.
+      Cada marcador representa una observación con su respectiva especie, ubicación y fecha. 
+      Cada avistamiento cuenta: comparte el tuyo y contribuye al conocimiento de nuestros océanos
+
     </p>
     <div id="map"></div>
   </div>
@@ -44,48 +46,54 @@
     <p id="status"></p>
   </div>
 
-  <div class="section flex-container">
-    <div class="video-section">
-      <h2>Video Etiquetado con DeepLabCut</h2>
-      <p>
-        Este video muestra un ejemplo de etiquetado automático realizado con la plataforma DeepLabCut. Se pueden observar 3 delfines etiquetados
-        dentro de un grupo de 7. Puedes pausar el video o avanzar cuadro a cuadro para identificar comportamientos
-        como cópulas o patrones de movimiento individuales.
-      </p>
-      <iframe src="https://drive.google.com/file/d/1X3GRKkGTFH878GbsoCmc8_OyqnlDqXDe/preview" allow="autoplay"></iframe>
-    </div>
+ <div class="section flex-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
 
-    <div class="image-section">
-      <img src="imagen1.jpg" alt="Gráfico 1 - Distribución" />
-      <p><b>Gráfico 1:</b> Muestra la distribución espacial de los avistamientos a lo largo del estrecho de Magallanes.</p>
-
-      <img src="imagen2.jpg" alt="Gráfico 2 - Frecuencia de especies" />
-      <p><b>Gráfico 2:</b> Representa la frecuencia de avistamientos por especie, destacando el delfín austral.</p>
-
-      <img src="imagen3.jpg" alt="Gráfico 3 - Horario de actividad" />
-      <p><b>Gráfico 3:</b> Análisis de horario de actividad con mayor presencia de individuos observados.</p>
-    </div>
+  <!-- Video etiquetado con DeepLabCut -->
+  <div class="video-section" style="flex: 1; min-width: 300px;">
+    <h2>Video Etiquetado con DeepLabCut</h2>
+    <p>
+      Este video muestra un ejemplo de etiquetado automático realizado con la plataforma DeepLabCut. Se pueden observar 3 delfines etiquetados
+      dentro de un grupo de 7. Puedes pausar el video o avanzar cuadro a cuadro para identificar comportamientos
+      como cópulas o patrones de movimiento individuales.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1X3GRKkGTFH878GbsoCmc8_OyqnlDqXDe/preview" allow="autoplay"></iframe>
   </div>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map').setView([-53.16, -70.88], 13);
+  <!-- Video georreferenciado -->
+  <div class="video-section" style="flex: 1; min-width: 300px;">
+    <h2>Video georreferenciado desde dron</h2>
+    <p>
+      Este video fue capturado por dron y contiene datos de GPS frame por frame. Está sincronizado con el video etiquetado para visualizar
+      trayectorias reales de desplazamiento en el espacio de cada individuo observado.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1Kvfe0lmvMZ2asCkzBC2zvLqxBy2iWl0e/preview" allow="autoplay"></iframe>
+  </div>
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+  <!-- Gráfico posición Y -->
+  <div class="image-section" style="flex: 1; min-width: 300px;">
+    <img src="https://drive.google.com/uc?export=view&id=1Vglbg53X4dMkL-rxN7iYo_Owv0h_NLaH" alt="Gráfico Posición Y" style="width: 100%;" />
+    <p><b>Gráfico de posición Y:</b> Muestra el movimiento vertical (eje Y en píxeles) de tres delfines a lo largo del tiempo. Representa ascensos y descensos en la escena.</p>
+  </div>
 
-    map.on('click', function(e) {
-      const lat = e.latlng.lat.toFixed(6);
-      const lng = e.latlng.lng.toFixed(6);
-      document.getElementById('latitud').value = lat;
-      document.getElementById('longitud').value = lng;
-    });
+  <!-- Gráfico posición X -->
+  <div class="image-section" style="flex: 1; min-width: 300px;">
+    <img src="https://drive.google.com/uc?export=view&id=1YZ78jAIBccmuoMoWY5Zd0yQVEPS_pDOf" alt="Gráfico Posición X" style="width: 100%;" />
+    <p><b>Gráfico de posición X:</b> Representa el desplazamiento lateral (eje X) de los delfines frame por frame en el video. Es útil para observar movimientos horizontales y patrones de interacción.</p>
+  </div>
 
-    async function cargarPuntos() {
-      const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQEY7fBxtuNz4vRUlGQa3sLykz7j1szN9nntF7riNbSxGyMwDQFx4hrBozGDH3KYQ/pub?output=csv');
-      const text = await response.text();
-      const rows = text.trim().split('\n').slice(1);
+  <!-- Tus tres imágenes adicionales -->
+  <div class="image-section" style="flex: 1 1 100%;">
+    <img src="imagen1.jpg" alt="Gráfico 1 - Distribución" style="width: 100%;" />
+    <p><b>Gráfico 1:</b> Muestra la distribución espacial de los avistamientos a lo largo del Estrecho de Magallanes.</p>
+
+    <img src="imagen2.jpg" alt="Gráfico 2 - Frecuencia de especies" style="width: 100%;" />
+    <p><b>Gráfico 2:</b> Representa la frecuencia de avistamientos por especie, destacando al delfín austral como uno de los más observados.</p>
+
+    <img src="imagen3.jpg" alt="Gráfico 3 - Horario de actividad" style="width: 100%;" />
+    <p><b>Gráfico 3:</b> Análisis del horario de mayor actividad de los individuos registrados en la zona de estudio.</p>
+  </div>
+
+</div>
 
       rows.forEach(row => {
         const [nombre, lat, lon, fecha] = row.split(',');
