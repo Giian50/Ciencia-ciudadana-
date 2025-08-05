@@ -12,30 +12,28 @@
     iframe { width: 100%; max-width: 800px; height: 450px; display: block; margin: auto; }
     form { margin-top: 20px; }
     input, button { display: block; margin: 10px 0; padding: 8px; width: 300px; }
+    .flex-container { display: flex; gap: 20px; flex-wrap: wrap; }
+    .video-section, .image-section { flex: 1; min-width: 300px; }
+    .image-section img { width: 100%; max-width: 400px; display: block; margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
   <div class="section">
     <h1>Ciencia Ciudadana: Avistamientos</h1>
-    <p>Visualización de puntos de avistamiento de cetáceos en la Región de Magallanes.</p>
+    <p>
+      Este mapa interactivo muestra los puntos de avistamiento de cetáceos registrados en la Región de Magallanes.
+      Cada marcador representa una observación con su respectiva especie, ubicación y fecha.
+    </p>
     <div id="map"></div>
   </div>
 
   <div class="section">
-    <h2>Video Etiquetado</h2>
-    <iframe src="https://drive.google.com/file/d/1X3GRKkGTFH878GbsoCmc8_OyqnlDqXDe/preview" allow="autoplay"></iframe>
-  </div>
-
-  <div class="section">
-    <h2>¿Cómo se ingresan los datos?</h2>
-    <p>
-      El ingreso de datos se realiza mediante formularios digitales o registros de campo, donde los participantes anotan información clave como especie, ubicación, número de individuos, y hora del avistamiento. Estos datos se procesan y visualizan automáticamente en el mapa.
-    </p>
-  </div>
-
-  <div class="section">
     <h2>Agregar nuevo avistamiento</h2>
+    <p>
+      Para ingresar un nuevo dato, simplemente haga clic en el mapa para obtener la ubicación, luego complete el formulario con:
+      nombre del avistamiento (especie), coordenadas (ya están autocompletadas) y la fecha/hora del avistamiento. Luego presione "Enviar".
+    </p>
     <form id="avistamientoForm">
       <input type="text" id="nombre" placeholder="Nombre del avistamiento" required />
       <input type="number" step="any" id="latitud" placeholder="Latitud" required />
@@ -46,6 +44,29 @@
     <p id="status"></p>
   </div>
 
+  <div class="section flex-container">
+    <div class="video-section">
+      <h2>Video Etiquetado con DeepLabCut</h2>
+      <p>
+        Este video muestra un ejemplo de etiquetado automático realizado con la plataforma DeepLabCut. Se pueden observar 3 delfines etiquetados
+        dentro de un grupo de 7. Puedes pausar el video o avanzar cuadro a cuadro para identificar comportamientos
+        como cópulas o patrones de movimiento individuales.
+      </p>
+      <iframe src="https://drive.google.com/file/d/1X3GRKkGTFH878GbsoCmc8_OyqnlDqXDe/preview" allow="autoplay"></iframe>
+    </div>
+
+    <div class="image-section">
+      <img src="imagen1.jpg" alt="Gráfico 1 - Distribución" />
+      <p><b>Gráfico 1:</b> Muestra la distribución espacial de los avistamientos a lo largo del estrecho de Magallanes.</p>
+
+      <img src="imagen2.jpg" alt="Gráfico 2 - Frecuencia de especies" />
+      <p><b>Gráfico 2:</b> Representa la frecuencia de avistamientos por especie, destacando el delfín austral.</p>
+
+      <img src="imagen3.jpg" alt="Gráfico 3 - Horario de actividad" />
+      <p><b>Gráfico 3:</b> Análisis de horario de actividad con mayor presencia de individuos observados.</p>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     const map = L.map('map').setView([-53.16, -70.88], 13);
@@ -54,7 +75,6 @@
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Hacer clic en el mapa y llenar el formulario
     map.on('click', function(e) {
       const lat = e.latlng.lat.toFixed(6);
       const lng = e.latlng.lng.toFixed(6);
