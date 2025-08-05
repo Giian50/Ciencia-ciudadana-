@@ -91,19 +91,13 @@
         <img src="https://drive.google.com/uc?export=view&id=1YZ78jAIBccmuoMoWY5Zd0yQVEPS_pDOf" alt="Gráfico posición X" />
         <p><strong>Gráfico de posición X:</strong> Representa el movimiento lateral (eje X) de los delfines, útil para detectar desplazamientos horizontales e interacciones.</p>
       </div>
-
-      <!-- Imagen combinada -->
-      <div class="image-section" style="flex: 1 1 100%;">
-        <img src="combined_graphics.png" alt="Gráficos de análisis de movimiento de delfines" />
-        <p><strong>Análisis combinado:</strong> Comparación visual entre desplazamientos verticales y laterales extraídos de video con seguimiento automático. Permite observar patrones de comportamiento individual.</p>
-      </div>
-
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([-53.16, -70.88], 13);
+    const map = L.map('map').setView([-53.16, -70.88], 7);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
@@ -161,9 +155,6 @@
           map.eachLayer(layer => {
             if (layer instanceof L.CircleMarker) map.removeLayer(layer);
           });
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-          }).addTo(map);
           cargarPuntos();
         } else {
           status.textContent = "Hubo un error al enviar.";
@@ -176,3 +167,4 @@
 
 </body>
 </html>
+
