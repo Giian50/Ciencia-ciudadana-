@@ -52,6 +52,15 @@
       <input type="number" step="any" id="latitud" placeholder="Latitud" required />
       <input type="number" step="any" id="longitud" placeholder="Longitud" required />
       <input type="datetime-local" id="fecha_hora" required />
+      <select name="especie" required>
+  <option value="" disabled selected>Selecciona especie</option>
+  <option value="Delfín austral">Delfín austral</option>
+  <option value="Delfín chileno">Delfín chileno</option>
+  <option value="Ballena">Ballena</option>
+</select>
+
+<textarea name="observaciones" rows="3" placeholder="Observaciones (comportamiento, grupo, etc.)"></textarea>
+
       <button type="submit">Enviar</button>
     </form>
     <p id="status"></p>
